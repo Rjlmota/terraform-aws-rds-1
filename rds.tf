@@ -42,6 +42,18 @@ resource "aws_db_instance" "rds_db" {
   }
 }
 
+resource "aws_route53_record" "rds_hostname" {
+  count = length(var.db_hostname) > 0 && var.db_type == "rds"  ? 1 : 0
+  
+  zone_id = var.zone_id #data.aws_route53_zone.selected.*.zone_id[0]
+  name = var.db_hostname #local.workspace.<key_one.yaml>.hostname
+  type = "CNAME"
+  ttl = "300"
+  records = [aws_db_instance.rds_db[0].address]
+}
+
+
+
 resource "aws_db_parameter_group" "rds_custom_db_pg" {
   count = var.create_db_parameter_group ? 1 : 0
 

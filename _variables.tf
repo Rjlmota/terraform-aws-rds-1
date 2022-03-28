@@ -3,6 +3,18 @@ variable "name" {
   description = "Name of this RDS Database"
 }
 
+
+variable "db_hostname"{
+  type        = string
+  description = "Name of the DNS Record"
+}
+
+variable "zone_id"{
+  type        = string
+  description = "Hosted zone ID"
+}
+
+
 variable "environment_name" {
   type        = string
   description = "Environment name to use as a prefix to this DB"
