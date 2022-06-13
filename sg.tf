@@ -1,11 +1,13 @@
 
 resource "aws_security_group" "rds_db" {
-  name   = "rds-${var.environment_name}-${var.name}"
+  name   = var.rds_sg_name
   vpc_id = var.vpc_id
 
   lifecycle {
     create_before_destroy = true
   }
+
+  description = var.rds_sg_description
 }
 
 resource "aws_security_group_rule" "rds_db_inbound_cidrs" {

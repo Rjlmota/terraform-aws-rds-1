@@ -4,6 +4,16 @@ variable "name" {
 }
 
 
+variable "rds_sg_name"{
+  type        = string
+  description = "Name of the SGs name"
+}
+
+variable "rds_sg_description"{
+  type        = string
+  description = "Description of the RDS SG"
+}
+
 variable "db_hostname"{
   type        = string
   description = "Name of the DNS Record"
