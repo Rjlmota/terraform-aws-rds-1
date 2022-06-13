@@ -17,7 +17,7 @@ resource "aws_db_instance" "rds_db" {
   backup_retention_period         = var.retention
   identifier                      = var.identifier == "" ? "${var.environment_name}-${var.name}" : var.identifier
   username                        = var.user
-  password                        = var.password
+  password                        = random_string.rds_db_password.result
   db_subnet_group_name            = try(aws_db_subnet_group.rds_subnet_group[0].id, var.db_subnet_group_id)
   vpc_security_group_ids          = [aws_security_group.rds_db.id]
   apply_immediately               = var.apply_immediately

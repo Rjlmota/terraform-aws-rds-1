@@ -57,10 +57,6 @@ variable "user" {
   description = "DB User"
 }
 
-variable "password" {
-  type        = string
-  description = "DB Password"
-}
 
 variable "retention" {
   type        = number
