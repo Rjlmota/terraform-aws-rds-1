@@ -40,6 +40,10 @@ resource "aws_db_instance" "rds_db" {
   tags = {
     Backup = var.backup
   }
+
+  lifecycle {
+    ignore_changes = [snapshot_identifier, engine_version, password]
+  }
 }
 
 resource "aws_route53_record" "rds_hostname" {
