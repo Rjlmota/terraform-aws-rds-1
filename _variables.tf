@@ -58,6 +58,12 @@ variable "user" {
 }
 
 
+variable "environment_name_ssm" {
+  type        = string
+  description = "DB User"
+}
+
+
 variable "retention" {
   type        = number
   description = "Snapshot retention period in days"
