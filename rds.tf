@@ -42,7 +42,7 @@ resource "aws_db_instance" "rds_db" {
   }
 
   lifecycle {
-    ignore_changes = [snapshot_identifier, engine_version, password]
+    ignore_changes = [snapshot_identifier, engine_version, password, final_snapshot_identifier]
   }
 }
 
